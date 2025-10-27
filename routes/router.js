@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
+const getJoke = require('../helpers/getJokes')
 
 
 
@@ -14,13 +15,13 @@ router.get('/', (req, res)=> {
             //console.log(resp.data)
 
             // move to helper
-            const randomJoke = resp.data[Math.floor(Math.random() * resp.data.length)] //pull randomly from jokes
+            //const randomJoke = resp.data[Math.floor(Math.random() * resp.data.length)] //pull randomly from jokes
 
             //console.log(randomJoke)
             res.render('pages/home', {
                 title: "desti Jokes App",
                 name: "desti's jokes app!",
-                joke: randomJoke
+                joke: getJoke(resp.data) //taked getJoke function and move to another location
         })
     })
 })
@@ -34,7 +35,7 @@ router.use((req, res, next)=> {
     res.status(404)
     .render('pages/404',{
         title: '404 Error',
-        name: '404 error. This page does not exist..'
+        name: 'Jokes on you'
     })
 })
 

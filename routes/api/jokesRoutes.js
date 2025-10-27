@@ -10,8 +10,13 @@ router.get('/', (req, res)=> {
     const url = 'https://api.sampleapis.com/jokes/goodJokes'
 
     axios.get(url)
-        .then(resp => res.json(resp))
-        .then(res.send('data received'))
+        .then(resp => {
+            res.render('pages/allJokes', {
+                title: 'All Jokes',
+                name: 'All Jokes',
+                data: resp.data
+            })
+        })
 
 })
 
