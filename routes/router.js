@@ -12,6 +12,8 @@ router.get('/', (req, res)=> {
     axios.get(url) //display random joke in terminal
         .then(resp => {
             //console.log(resp.data)
+
+            // move to helper
             const randomJoke = resp.data[Math.floor(Math.random() * resp.data.length)] //pull randomly from jokes
 
             //console.log(randomJoke)
