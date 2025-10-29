@@ -4,6 +4,18 @@
 
 <main class="main" id="main">
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <% if (prev != null) { %>
+                    <a href="?page=<%= prev %>">prev</a>
+                <% } %>
+<!-- if prev is not null, then create this link -->
+                <% if (next != null) { %>
+                    <a href="?page=<%= next %>">next</a>
+                <% } %>
+<!-- is next page is -->
+            </div>
+        </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <% data.forEach(joke => { %>
                 <div class="col">
@@ -15,7 +27,12 @@
                         </div>
                         <div class="card-footer">
                             <p class="card-text">
-                                <%= joke.punchline %>
+                                <!-- <%= joke.punchline %> -->
+<!-- 32-34 creates a link to see the answer, # = dead link -->
+                                 Click
+                                 <a href="/jokes/<%= joke.id %>" class="joke-link">here</a> 
+<!--33 created a clickable link to reveal the answer "Click here for the punchline" -->
+                                 for the punchline
                             </p>
                         </div>
                     </div>
@@ -26,3 +43,6 @@
 </main>
 
 <%- include('../partials/footer') %>
+
+<!-- line 10-11 created 2 links  -->
+<!-- when adding links, Is it taking me somewhere or Do it want me to do something -->
